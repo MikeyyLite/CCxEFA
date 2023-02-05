@@ -6,7 +6,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Page2 extends StatelessWidget {
-  const Page2(
+  Page2(
     this.page,
     this.notifier, {
     super.key,
@@ -14,9 +14,14 @@ class Page2 extends StatelessWidget {
 
   final int page;
   final ValueNotifier<double> notifier;
+  var size, height, width;
 
   @override
   Widget build(BuildContext context) {
+    size = MediaQuery.of(context).size;
+    height = size.height;
+    width = size.width;
+
     return SlidingPage(
       notifier: notifier,
       page: page,
@@ -26,13 +31,15 @@ class Page2 extends StatelessWidget {
           Center(
             child: Column(
               children: [
-                SizedBox(height: 77),
+                SizedBox(height: height * 77 / 800),
                 SlidingContainer(
                     offset: 300,
                     child: SvgPicture.asset(
                       'images/page1.svg',
+                      height: height * 250 / 800,
+                      width: width * 274.68 / 360,
                     )),
-                SizedBox(height: 53),
+                SizedBox(height: height * 53 / 800),
                 SlidingContainer(
                   offset: 300,
                   child: Text(
@@ -41,26 +48,30 @@ class Page2 extends StatelessWidget {
                     style: GoogleFonts.montserrat(
                         textStyle: TextStyle(
                       fontWeight: FontWeight.w600,
-                      fontSize: 26,
+                      fontSize: height * 26 / 800,
                       color: Color(0xFFFFFFFF),
                     )),
                   ),
                 ),
-                SizedBox(height: 30),
+                SizedBox(height: height * 30 / 800),
                 Container(
                   height: 100,
                   width: 295,
-                  child: SlidingContainer(
-                    offset: 300,
-                    child: Text(
-                      'xyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxxyxyxyxyxyxyxyxyxxyyxyxyxyxyxyxyxxyxyyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxxyxyxyxyxyxyxyxyxyxyxyxyxyxxyxy',
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.montserrat(
-                          textStyle: TextStyle(
-                        fontWeight: FontWeight.w500,
-                        fontSize: 16,
-                        color: Color(0xFFFFFFFF),
-                      )),
+                  child: Container(
+                    height: height * 1 / 8,
+                    width: width * 295 / 360,
+                    child: SlidingContainer(
+                      offset: 300,
+                      child: Text(
+                        'xyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxxyxyxyxyxyxyxyxyxxyyxyxyxyxyxyxyxxyxyyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxxyxyxyxyxyxyxyxyxyxyxyxyxyxxyxy',
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.montserrat(
+                            textStyle: TextStyle(
+                          fontWeight: FontWeight.w500,
+                          fontSize: height * 16 / 800,
+                          color: Color(0xFFFFFFFF),
+                        )),
+                      ),
                     ),
                   ),
                 )

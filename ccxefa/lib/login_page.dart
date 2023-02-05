@@ -5,10 +5,14 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class MyWidget extends StatelessWidget {
-  const MyWidget({super.key});
+  MyWidget({super.key});
+  var size, height, width;
 
   @override
   Widget build(BuildContext context) {
+    size = MediaQuery.of(context).size;
+    height = size.height;
+    width = size.width;
     return MaterialApp(
         home: Scaffold(
             backgroundColor: Color(0xFF212426),
@@ -20,13 +24,14 @@ class MyWidget extends StatelessWidget {
                     child: Align(
                       alignment: Alignment.centerRight,
                       child: Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 24, 15, 0),
+                        padding: EdgeInsets.fromLTRB(
+                            0, height * 24 / 800, height * 15 / 800, 0),
                         child: Text(
                           "NEED HELP?",
                           textAlign: TextAlign.right,
                           style: GoogleFonts.montserrat(
                             textStyle: TextStyle(
-                                fontSize: 12,
+                                fontSize: height * 12 / 800,
                                 color: Color(0xFFFFFFFF),
                                 fontWeight: FontWeight.w600),
                           ),
@@ -39,40 +44,40 @@ class MyWidget extends StatelessWidget {
             body: Center(
               child: Column(children: [
                 SizedBox(
-                  height: 140,
+                  height: height * 134 / 800,
                 ),
                 Row(children: [
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: EdgeInsets.all(8),
                     child: Column(
                         children: [SvgPicture.asset('images/Ellipse.svg')]
                         //Add Icon
                         ),
                   ),
                   SizedBox(
-                    width: 18,
+                    width: width * 18 / 360,
                   ),
                   Column(
                     children: [
                       Text("SMS",
                           style: GoogleFonts.montserrat(
                               textStyle: TextStyle(
-                                  fontSize: 40,
+                                  fontSize: height * 40 / 800,
                                   color: Color(0xFFFFFFFF),
                                   fontWeight: FontWeight.w600)))
                     ],
                   ),
                 ]),
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 40, 0, 0),
+                  padding: EdgeInsets.fromLTRB(0, height * 50 / 800, 0, 0),
                   child: Row(
                     children: [
                       Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
+                        padding: EdgeInsets.fromLTRB(width * 20 / 360, 0, 0, 0),
                         child: Text("Stock",
                             style: GoogleFonts.montserrat(
                                 textStyle: TextStyle(
-                                    fontSize: 40,
+                                    fontSize: height * 40 / 800,
                                     color: Color(0xFFFFFFFF),
                                     fontWeight: FontWeight.w400))),
                       ),
@@ -81,11 +86,11 @@ class MyWidget extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                  padding: EdgeInsets.fromLTRB(0, height * 10 / 800, 0, 0),
                   child: Row(
                     children: [
                       Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
+                        padding: EdgeInsets.fromLTRB(width * 20 / 360, 0, 0, 0),
                         child: Text("market",
                             style: GoogleFonts.montserrat(
                                 textStyle: TextStyle(
@@ -98,15 +103,15 @@ class MyWidget extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                  padding: EdgeInsets.fromLTRB(0, height * 10 / 800, 0, 0),
                   child: Row(
                     children: [
                       Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
+                        padding: EdgeInsets.fromLTRB(width * 20 / 360, 0, 0, 0),
                         child: Text("simulator",
                             style: GoogleFonts.montserrat(
                                 textStyle: TextStyle(
-                                    fontSize: 40,
+                                    fontSize: height * 40 / 800,
                                     color: Color(0xFF30CEDF),
                                     fontWeight: FontWeight.w700))),
                       ),
@@ -114,11 +119,11 @@ class MyWidget extends StatelessWidget {
                     //Add Stock
                   ),
                 ),
-                SizedBox(height: 76),
+                SizedBox(height: height * 76 / 800),
                 Row(
                   children: [
                     SizedBox(
-                      width: 20,
+                      width: width * 20 / 360,
                     ),
                     SvgPicture.asset(
                       "images/Rectangle.svg",
@@ -127,7 +132,7 @@ class MyWidget extends StatelessWidget {
                   //Add rectangle
                 ),
                 SizedBox(
-                  height: 86,
+                  height: height * 86 / 800,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -139,14 +144,14 @@ class MyWidget extends StatelessWidget {
                           textAlign: TextAlign.center,
                           style: GoogleFonts.montserrat(
                               textStyle: TextStyle(
-                                  fontSize: 12,
+                                  fontSize: height * 12 / 800,
                                   color: Color(0xFFFFFFFF),
                                   fontWeight: FontWeight.w500))),
                     ),
                   ],
                 ),
                 SizedBox(
-                  height: 7,
+                  height: height * 7 / 800,
                 ),
                 GestureDetector(
                   onTap: () {},

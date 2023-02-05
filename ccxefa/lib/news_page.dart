@@ -16,20 +16,34 @@ class News extends StatefulWidget {
 class _NewsState extends State<News> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: const ListViewBuilder());
+    return MaterialApp(home: ListViewBuilder());
   }
 }
 
 class ListViewBuilder extends StatelessWidget {
-  const ListViewBuilder({Key? key}) : super(key: key);
+  var size, height, width;
+  ListViewBuilder({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    size = MediaQuery.of(context).size;
+    height = size.height;
+    width = size.width;
+
     return Scaffold(
-        backgroundColor: Color(0xFF212426),
+        backgroundColor: Colors.black,
         appBar: AppBar(
+            leading: IconButton(
+              color: Colors.white,
+
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              icon: Icon(Icons.arrow_back_ios),
+              //replace with our own icon data.
+            ),
             centerTitle: true,
-            backgroundColor: Color(0xFF35363A),
+            backgroundColor: Colors.black,
             title: Text("News",
                 style: GoogleFonts.montserrat(
                   textStyle: TextStyle(
@@ -38,45 +52,89 @@ class ListViewBuilder extends StatelessWidget {
                       fontWeight: FontWeight.w600),
                 ))),
         body: ListView.builder(
-          itemCount: 5,
+          itemCount: 10,
           itemBuilder: (BuildContext context, int index) {
-            return Card(
-              child: Column(
-                children: <Widget>[
-                  Row(children: <Widget>[
+            return Padding(
+              padding: const EdgeInsets.only(
+                left: 10,
+                top: 15,
+                right: 10,
+              ),
+              child: Container(
+                height: height * 1 / 8,
+                width: width * 34 / 36,
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(15)),
+                  ),
+                  child: Row(children: <Widget>[
                     Container(
-                      child: Column(children: [
-                        SvgPicture.asset('images/Rectangle2.svg'),
-                      ]),
+                      height: height * 1 / 8,
+                      width: width * 10 / 36,
+                      // child: Column(children: [
+                      //   SvgPicture.asset(
+                      //     'images/Rectangle2.svg',
+                      //   ),
+                      // ]),
                     ),
                     Container(
-                        child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            TextButton(
-                                onPressed: () {},
-                                child: Text('Productivity',
-                                    style:
-                                        TextStyle(color: Color(0xFF6E798C)))),
-                            SizedBox(width: 27)
-                          ],
-                        ),
-                        TextButton(
-                            onPressed: () {},
-                            child: Text(
-                              '7 Skills of Highly Effective Programmers',
-                              style: TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w600,
-                                  color: Color(0xFF081F32)),
-                            ))
-                      ],
-                    ))
+                        // color: Colors.red,
+                        width: width * 223 / 360,
+                        height: height * 1 / 8,
+                        child: Container(
+                          // color: Colors.blue,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                // color: Colors.black,
+                                height: height * 37 / 800,
+                                width: width * 223 / 360,
+                                // color: Colors.black,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    TextButton(
+                                      onPressed: () {},
+                                      child: Align(
+                                          alignment: Alignment.topLeft,
+                                          child: Container(
+                                              // height: height * 1 / 80,
+                                              // color: Colors.amber,
+                                              child: Text('PRODUCTIVITY',
+                                                  style: TextStyle(
+                                                      fontSize:
+                                                          height * 11 / 800,
+                                                      color:
+                                                          Color(0xFF6E798C))))),
+                                    ),
+                                    // SizedBox(width: 27)
+                                  ],
+                                ),
+                              ),
+                              Container(
+                                // color: Colors.amber,
+                                height: height * 63 / 800 - 8,
+                                width: width * 223 / 360,
+                                child: TextButton(
+                                    onPressed: () {},
+                                    child: Align(
+                                        alignment: Alignment.topCenter,
+                                        child: Text(
+                                          '7 Skills of Highly Effective Programmers',
+                                          style: TextStyle(
+                                              fontSize: height * 14 / 800,
+                                              fontWeight: FontWeight.w600,
+                                              color: Color(0xFF081F32)),
+                                        ))),
+                              )
+                            ],
+                          ),
+                        ))
                   ]),
-                ],
+                ),
               ),
             );
           },

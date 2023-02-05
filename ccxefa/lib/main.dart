@@ -34,7 +34,7 @@ class AppScrollBehavior extends MaterialScrollBehavior {
 }
 
 class ExamplePage extends StatefulWidget {
-  const ExamplePage({
+  ExamplePage({
     super.key,
   });
 
@@ -46,9 +46,14 @@ class _ExamplePageState extends State<ExamplePage> {
   final ValueNotifier<double> notifier = ValueNotifier(0);
   final _pageCtrl = PageController();
   int pageCount = 4;
+  var size, height, width;
 
   @override
   Widget build(BuildContext context) {
+    size = MediaQuery.of(context).size;
+    height = size.height;
+    width = size.width;
+
     return Scaffold(
       body: Center(
         child: Stack(children: <Widget>[
@@ -59,48 +64,6 @@ class _ExamplePageState extends State<ExamplePage> {
             notifier: notifier,
           ),
 
-          // /// Separator.
-          // Align(
-          //   alignment: const Alignment(0, 0.85),
-          //   child: Container(
-          //     width: double.infinity,
-          //     height: 0.5,
-          //     color: Colors.white,
-          //   ),
-          // ),
-          // Align(
-          //   alignment: Alignment.centerLeft,
-          //   child: IconButton(
-          //     icon: const Icon(
-          //       Icons.arrow_back_ios_rounded,
-          //       color: Colors.white,
-          //     ),
-          //     onPressed: () {
-          //       _pageCtrl.previousPage(
-          //         duration: const Duration(milliseconds: 600),
-          //         curve: Curves.linear,
-          //       );
-          //     },
-          //   ),
-          // ),
-          // Align(
-          //   alignment: Alignment.centerRight,
-          //   child: IconButton(
-          //     icon: const Icon(
-          //       Icons.arrow_back_ios_rounded,
-          //       color: Colors.white,
-          //       textDirection: TextDirection.rtl,
-          //     ),
-          //     onPressed: () {
-          //       _pageCtrl.nextPage(
-          //         duration: const Duration(milliseconds: 600),
-          //         curve: Curves.linear,
-          //       );
-          //     },
-          //   ),
-          // ),
-
-          /// [SlidingIndicator] for [PageView] in [SlidingTutorial].
           Align(
               alignment: const Alignment(0, 0.5),
               child: SmoothPageIndicator(
