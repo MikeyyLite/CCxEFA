@@ -156,7 +156,7 @@ class ListViewBuilder extends StatelessWidget {
                     style: GoogleFonts.montserrat(
                       textStyle: TextStyle(
                           fontSize: 16,
-                          color: Color(0xFFFFFFFF),
+                          color: const Color(0xFFFFFFFF),
                           fontWeight: FontWeight.w600),
                     ))),
             body: pagebody);
